@@ -1,0 +1,4 @@
+1. Add mybatis-3.2.5.jar、mysql-connector-java-5.1.15-bin.jar
+2. Create mybatis-config.xml
+3. Create POJO Class
+4. Create mapping XML file

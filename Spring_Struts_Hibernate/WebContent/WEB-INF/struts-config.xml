@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<!-- 設定表單物件 -->
+	<form-beans>
+		<form-bean name="studentActionForm" type="ln.actionform.StudentActionForm"></form-bean>
+	</form-beans>
+	
+	<!-- 設定Action物件 -->
+	<action-mappings>
+	   <action path="/student" parameter="method" name="studentActionForm">
+	       <forward name="success" path="/WEB-INF/showstudent.jsp"></forward>
+	       <forward name="update" path="/WEB-INF/updatestudent.jsp"></forward>
+	   </action>
+   	</action-mappings>
+	
+	<controller>
+        <set-property property="processorClass" value="org.springframework.web.struts.DelegatingRequestProcessor"/>
+	</controller>
+</struts-config>

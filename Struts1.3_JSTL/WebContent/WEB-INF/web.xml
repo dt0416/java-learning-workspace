@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>Struts1.3_JSTL</display-name>
+  
+  <!-- 配置ActionServlet -->
+  <servlet>
+  	<servlet-name>action</servlet-name>
+  	<servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+  	<!-- 配置config，預設為/WEB-INF/struts-config.xml，假如不是此路徑才需要設定， 但建議沒變還是設定 -->
+  	<!-- 可設定多份, 以逗點隔開 -->
+  	<init-param>
+  		<param-name>config</param-name>
+  		<param-value>/WEB-INF/struts-config.xml</param-value>
+  		<!-- 多份範例 -->
+  		<!-- <param-value>/WEB-INF/struts-config.xml, /WEB-INF/struts-config2.xml</param-value> -->
+  	</init-param>
+  </servlet>
+  
+  <!-- 配置.do的導至action servlet -->
+  <servlet-mapping>
+  	<servlet-name>action</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 配置Filter解決中文編碼問題 -->
+  <filter>
+  	<filter-name>encodingFilter</filter-name>
+  	<filter-class>ln.struts.filter.EncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>utf-8</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+	<filter-name>encodingFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

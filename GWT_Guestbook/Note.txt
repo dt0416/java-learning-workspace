@@ -1,0 +1,30 @@
+此專案為使用GWT的工具產生的專案(無任何頁面，所有頁面皆是手動產生)
+可瀏覽所有頁面：http://127.0.0.1:8888/index.html
+
+1. 利用EntryPoint拉出畫面，步驟：
+    a. 新增Module:GuestBook
+    b. 新增EntryPoint:AddPost，拉出簡易表單
+    c. 新增HTML:guestbook.html，將javascript src改成/com.gb.GuestBook/com.gb.GuestBook.nocache.js
+
+2. 利用UiBinder拉出畫面，步驟：
+    a. 新增Module: ContactModule
+    b. 新增Contact.java(簡單Java Bean)
+    c. 新增UiBinder: ContactWidget
+        - xml拉出簡易名片
+        - java增加Contact屬性，並把屬性都加上getter、setter
+    d. 新增EntryPoint: UiBinderDemo，利用Design加入ContactWidget，在sourcey調整ContactWidget裡的Contact內容
+    c. 新增HTML:guestbook.html，將javascript src改成/com.gb.ContactModule/com.gb.ContactModule.nocache.js
+
+3. 示範RPC
+    a. 新增Service介面: HelloService，繼承RemoteService
+    b. 新增ServiceSync介面: HelloServiceAsync，利用HelloService錯誤來產生
+    c. 新增RemoteServiceServlet: HelloServiceImpl，繼承RemoteServiceServlet、實作HelloService
+    d. 在web.xml新增Servlet: helloServiceImpl指向HelloServiceImpl
+    e. 使用HelloServiceAsync，此範例還增加一個Composite: HelloClient, 放在UiBinderDemo裡
+        HelloServiceAsync helloService = GWT.create(HelloService.class);
+        helloService.hello(textBox.getText(), new AsyncCallback<String>() {
+            ...
+        });
+4. 利用3示範Datastore
+
+5. 使用Servlet、JSP、JSTL與GAE的Datastore實作會員資料儲存、查詢

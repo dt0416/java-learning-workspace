@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+        
+	<!-- 利用Setter注入 -->
+	<bean id="student" class="ln.spring.c02bean.c03beaninject.Student">  
+		<property name="name">
+			<value>Jeremy Lin</value>
+		</property>
+		<property name="friends"><!-- 注入陣列 -->
+			<list>
+				<value>Friend1</value>
+				<value>Friend2</value>
+			</list>
+		</property>
+		<property name="teachers"><!-- 物件陣列 -->
+			<list>
+				<ref bean="teacher1"></ref>
+				<ref bean="teacher2"></ref>
+				<ref bean="teacher1"></ref>
+				<ref bean="teacher2"></ref>
+			</list>
+		</property>
+		<property name="listTeachers"><!-- List物件 -->
+			<list>
+				<ref bean="teacher1"></ref>
+				<ref bean="teacher2"></ref>
+				<ref bean="teacher1"></ref>
+				<ref bean="teacher2"></ref>
+			</list>
+		</property>
+		<property name="setTeachers"><!-- Set物件 -->
+			<set>
+				<ref bean="teacher1"></ref>
+				<ref bean="teacher2"></ref>
+				<ref bean="teacher1"></ref>
+				<ref bean="teacher2"></ref>
+			</set>
+		</property>
+		<property name="mapTeacher"><!-- Map物件 -->
+			<map>
+				<entry key="t1" value-ref="teacher1"></entry>
+				<entry key="t2" value-ref="teacher2"></entry>
+			</map>
+		</property>
+		<property name="myInnerTeacher"><!-- 儘內部使用的Bean -->
+			<bean class="ln.spring.c02bean.c03beaninject.Teacher">
+				<property name="name">
+					<value>MyInnerTeacher Name</value>
+				</property>
+			</bean>
+		</property>
+		<property name="pp"><!-- Properties物件 -->
+			<props>
+				<prop key="p1">P1Value</prop>
+				<prop key="p2">P2Value</prop>
+			</props>
+		</property>
+		<property name="nullObj"><!-- Null物件 -->
+			<null></null>
+		</property>
+	</bean>
+	
+	<bean id="teacher1" class="ln.spring.c02bean.c03beaninject.Teacher">
+		<property name="name">
+			<value>Teacher1 Name</value>
+		</property>
+	</bean>
+	<bean id="teacher2" class="ln.spring.c02bean.c03beaninject.Teacher">
+		<property name="name">
+			<value>Teacher2 Name</value>
+		</property>
+	</bean>
+	
+	<!-- 利用Constructor注入 -->
+	<bean id="employee" class="ln.spring.c02bean.c03beaninject.Employee">
+		<constructor-arg index="0">
+			<value>Emp Name</value><!-- 如為物件可使用ref -->
+		</constructor-arg>
+		<constructor-arg index="1" type="int"><!-- type可指定也可不指定, 當有一樣數量的建構子(overloading)時便會用type去尋找最合適的 -->
+			<value>18</value>
+		</constructor-arg>
+	</bean>
+</beans>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+        
+	<bean id="student" class="ln.spring.c02bean.c04beaninherit.Student">  
+		<property name="name">
+			<value>Jeremy Lin</value>
+		</property>
+	</bean>
+
+	<bean id="smallStudent1" class="ln.spring.c02bean.c04beaninherit.SmallStudent">  
+		<property name="age">
+			<value>18</value>
+		</property>
+	</bean>
+	
+	<!-- 使用parent -->
+	<bean id="smallStudent2" parent="student" class="ln.spring.c02bean.c04beaninherit.SmallStudent">  
+		<property name="age">
+			<value>20</value>
+		</property>
+	</bean>
+	
+	<!-- 抽象的類別(可當做某類別的預設值) -->
+	<bean id="abstractStudent" abstract="true">
+		<property name="name">
+			<value>Abstract Student</value>
+		</property>
+	</bean>
+	
+	<!-- 使用抽象parent -->
+	<bean id="smallStudent3" parent="abstractStudent" class="ln.spring.c02bean.c04beaninherit.SmallStudent">  
+		<property name="age">
+			<value>22</value>
+		</property>
+	</bean>
+
+</beans>

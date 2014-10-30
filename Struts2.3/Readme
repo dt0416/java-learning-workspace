@@ -1,0 +1,21 @@
+==========================================================
+= Struts
+==========================================================
+o   使用Struts 2.3.15.2
+o   優點:
+    Action『不是』單例(Singleton)，各個request都是取不同instance，但可透過Spring用單例的方式運作
+o   缺點:
+    
+o   重要物件:
+    
+o   步驟
+    1. 將lib裡的全部lib加進WEB-ING裡的lib
+    2. 至/WEB-INF/web.xml將StrutsPrepareAndExecuteFilter配置至filter
+    3. 建立/Login.html、/WEB-INF/welcome.jsp、/WEB-INF/error.jsp
+    3. 建立Action
+    4. 至src/下新增struts.xml，並建立action的跳轉關係
+o   解決中文編碼問題
+    
+==========================================================
+= 
+==========================================================

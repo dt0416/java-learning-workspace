@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <!-- 可以設置多組環境 -->
+  <properties resource="ln/mybatis/jdbc.properties" />
+  <!-- Type別名 -->
+  <typeAliases>
+      <typeAlias type="ln.mybatis.model.Student" alias="Student" />
+      <typeAlias type="ln.mybatis.model.RoomWithUser" alias="RoomWithUser" />
+      <typeAlias type="ln.mybatis.model.User" />
+  </typeAliases>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="${4demo.driver}"/>
+        <property name="url" value="${4demo.url}"/>
+        <property name="username" value="${4demo.username}"/>
+        <property name="password" value="${4demo.password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  
+  <!-- 映射文件 -->
+  <mappers>
+    <mapper resource="ln/mybatis/mapper/Student.xml"/>
+    <mapper resource="ln/mybatis/mapper/Room.xml"/>
+  </mappers>
+</configuration>

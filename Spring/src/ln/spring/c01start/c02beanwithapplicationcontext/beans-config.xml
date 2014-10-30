@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+        
+	<bean id="student" class="ln.spring.c01start.c02beanwithapplicationcontext.Student">  
+		<property name="name"><!-- name的第一個字不區分大小寫 -->
+			<value>Jeremy Lin</value>
+		</property>
+	</bean>
+</beans>

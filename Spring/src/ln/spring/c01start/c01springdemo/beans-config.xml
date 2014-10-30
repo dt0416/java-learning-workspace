@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+        
+	<bean id="userBean" class="ln.spring.c01start.c01springdemo.UserBean">  
+		<property name="name"><!-- name的第一個字不區分大小寫 -->
+			<value>Jeremy Lin</value>
+		</property>
+	</bean>
+
+	<bean id="myBean" class="ln.spring.c01start.c01springdemo.MyBean">  
+		<property name="name"><!-- name的第一個字不區分大小寫 -->
+			<value>Jeremy Lin</value> 
+		</property>
+		<property name="ub" ref="userBean"></property><!-- ref指向其中一個id -->
+	</bean>
+	
+</beans>

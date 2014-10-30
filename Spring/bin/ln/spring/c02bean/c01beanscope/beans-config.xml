@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+        
+	<bean id="student" class="ln.spring.c02bean.c01beanscope.Student"><!-- scope預設為singleton -->
+		<property name="name">
+			<value>Jeremy Lin</value>
+		</property>
+	</bean>
+
+	<bean id="teacher" scope="prototype" class="ln.spring.c02bean.c01beanscope.Teacher">  
+		<property name="name">
+			<value>Jeremy Lin2</value>
+		</property>
+	</bean>
+</beans>

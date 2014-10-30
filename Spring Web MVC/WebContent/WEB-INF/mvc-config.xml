@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- 預設會使用BeanNameUrlHandlerMapping，使用DefaultAnnotationHandlerMapping通常就不會再有此配置 -->
+    <bean name="/firstMvc" class="ln.controller.A01_FirstController"></bean>
+    
+    <!-- 配置使用DefaultAnnotationHandlerMapping -->
+    <context:component-scan base-package="ln.controller"></context:component-scan>
+    <mvc:annotation-driven></mvc:annotation-driven>
+    <!-- 指定靜態文件 -->
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/" mapping="/**.html"/>
+    
+    <!-- 配置View Resolver : InternalResourceViewResolver -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 設定viewClass為JstlView -->
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+	<!-- 配置上傳檔案用的Resolver -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+       <property name="maxUploadSize" value="100000" />
+    </bean>
+    
+    <!-- 配置全局例外處理方式 -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.sql.SQLException">sqlexception</prop>
+                <prop key="java.lang.Exception">exception</prop><!-- 代表導至名稱為exception的view -->
+            </props>
+        </property>
+    </bean>
+</beans>

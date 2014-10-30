@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+        
+	<bean id="student" class="ln.spring.c02bean.c02beanlifecycle.Student" init-method="initBean" destroy-method="destroyBean"><!-- scope預設為singleton -->
+		<property name="name">
+			<value>Jeremy Lin</value>
+		</property>
+	</bean>
+	
+	<!-- 後製處理器:類似web的filter, 所有的Bean皆會被呼叫到 -->
+	<bean id="mybeanpostprocessor" class="ln.spring.c02bean.c02beanlifecycle.MyBeanPostProcessor">
+	</bean>
+</beans>

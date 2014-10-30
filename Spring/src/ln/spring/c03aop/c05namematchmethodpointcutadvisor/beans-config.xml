@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 配置被代理對象 -->
+	<bean id="student" class="ln.spring.c03aop.c05namematchmethodpointcutadvisor.Student">
+		<property name="name">
+			<value>Jeremy Lin</value>
+		</property>
+	</bean>
+	
+	<!-- 配置前置通知 -->
+	<bean id="myMethodBeforeAdvice" class="ln.spring.c03aop.c05namematchmethodpointcutadvisor.MyMethodBeforeAdvice" />
+
+	<!-- 配置NameMatchPointcutAdvisor -->
+	<bean id="helloAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+		<property name="mappedName">
+			<value>sayH*</value>
+		</property>
+		<!-- or -->
+		<property name="mappedNames">
+			<list>
+				<value>sayH*</value>
+			</list>
+		</property>
+		<property name="advice">
+			<ref bean="myMethodBeforeAdvice"/>
+		</property>
+	</bean>
+	
+	<!-- 配置代理對象 -->
+	<bean id="proxyFactoryBean" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- 代理介面集 -->
+		<property name="proxyInterfaces">
+			<list>
+				<value>ln.spring.c03aop.c05namematchmethodpointcutadvisor.IStudent</value>
+			</list>
+		</property>
+		<!-- 把通知織入到代理對象 -->
+		<property name="interceptorNames">
+			<list>
+				<value>helloAdvisor</value>
+			</list>
+		</property>
+		<!-- 配置被代理對象 -->
+		<property name="target">
+			<ref bean="student" />
+		</property>
+	</bean>
+</beans>

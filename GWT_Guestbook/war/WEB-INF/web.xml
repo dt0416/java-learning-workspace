@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+    <servlet>
+        <servlet-name>helloServiceImpl</servlet-name>
+        <servlet-class>com.gb.server.HelloServiceImpl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>regServlet</servlet-name>
+        <servlet-class>com.gb.server.RegServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>postServiceImpl</servlet-name>
+        <servlet-class>com.guestbook.server.PostServiceImpl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>googleServlet</servlet-name>
+        <servlet-class>com.guestbook.server.GoogleServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>mailServlet</servlet-name>
+        <servlet-class>com.mail.MailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>mailServiceServlet</servlet-name>
+        <servlet-class>com.mail.MailServiceServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>helloServlet</servlet-name>
+        <servlet-class>com.cron.HelloServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>helloServiceImpl</servlet-name>
+        <url-pattern>/com.gb.ContactModule/hello</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>regServlet</servlet-name>
+        <url-pattern>/reg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>postServiceImpl</servlet-name>
+        <url-pattern>/com.guestbook.Guestbook/post</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>googleServlet</servlet-name>
+        <url-pattern>/google</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>mailServlet</servlet-name>
+        <url-pattern>/mailtest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>mailServiceServlet</servlet-name>
+        <url-pattern>/_ah/mail/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>helloServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+</web-app>

@@ -1,0 +1,4 @@
+此專案為使用GWT的工具自動產生的範例專案
+包含基本測試頁面GWT_FirstGWT.html、實驗Servlet、JSP
+1. 新增Servlet:src/ln.gwt.HelloServlet.java，web.xml也需做servlet設定
+2. 新增JSP:war/hello.jsp

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+        
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	    <property name="url" value="jdbc:mysql://localhost/4demo"/>
+	    <property name="username" value="root"/>
+	    <property name="password" value="cde3vfr"/>
+	    <property name="initialSize" value="30"/>
+	    <property name="maxActive" value="500"/> 
+	    <property name="maxIdle" value="2"/>
+	    <property name="minIdle" value="1"/>
+	</bean>
+
+	<bean id="sessionFactory"  class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	    <property name="dataSource" ref="dataSource"/>
+	    <property name="mappingResources">
+	        <list>
+	            <value>ln/spring/hibernate/pojo/Course.hbm.xml</value>
+                <value>ln/spring/hibernate/pojo/Room.hbm.xml</value>
+                <value>ln/spring/hibernate/pojo/Student.hbm.xml</value>
+                <value>ln/spring/hibernate/pojo/Studentcourse.hbm.xml</value>
+                <value>ln/spring/hibernate/pojo/User.hbm.xml</value>
+	        </list>
+	    </property>
+	    <property name="hibernateProperties">
+	        <value>
+	            hibernate.dialect=org.hibernate.dialect.OracleDialect
+	            hibernate.hbm2ddl.auto=update
+	            hibernate.show_sql=true
+	            hibernate.cache.use_second_level_cache=true
+	            hibernate.cache.provider_class=org.hibernate.cache.EhCacheProvider
+	            hibernate.generate_statistics=true
+	        </value>
+	    </property>
+	</bean>
+	
+	<!-- Transaction -->
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+	    <property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="txManager" />
+	
+	<!-- Service -->
+    <bean id="studentService" class="ln.service.imp.StudentServiceImp">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    
+    <!-- Struts Action -->
+    <bean name="/student" class="ln.action.StudentAction">
+        <property name="studentServiceInter" ref="studentService"></property>
+    </bean>
+</beans>

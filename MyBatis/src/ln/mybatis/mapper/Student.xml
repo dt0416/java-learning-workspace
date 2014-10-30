@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ln.mybatis.mapper.Student">
+    <select id="selectAllStudent" resultType="Student">
+        select * from student
+    </select>
+    
+    <!-- like範例 -->
+    <select id="selectLike" resultType="Student" parameterType="string">
+        select * from student
+        where name like #{name}
+    </select>
+    
+    <!-- multi paramter範例 --><!-- 當有小於大於符號需使用&lt;/&gt;或用<![CDATA[ ... ]]>包圍起來-->
+    <select id="selectMutliWhere" resultType="Student" parameterType="map">
+        <![CDATA[
+        select * from student
+        where name like #{name}
+         and age < #{age}
+        ]]>
+    </select>
+    
+    <!-- 同上範例，使用不同撰寫方式 -->
+    <select id="selectMutliWhere2" resultType="Student" parameterType="map">
+        select * from student
+        where name like #{name}
+         and age &lt; #{age}
+    </select>
+    
+    <!-- 分頁範例，需根據不同資料庫撰寫不同語法 -->
+    <select id="selectPagingStudent" resultType="Student" parameterType="map">
+        select * from student
+        limit #{pageOffset}, #{pageSize}
+    </select>
+    
+    <!-- 分頁範例，取得count(*) -->
+    <select id="selectPagingStudentCount" resultType="int">
+        select count(*) from student
+    </select>
+    
+    <!-- 動態SQL(dynamic SQL) -->
+    <select id="selectDynamicStudent" resultType="Student" parameterType="map">
+        
+        select * from student
+        <where><!-- 使用where標籤就可以不用自行撰寫where 1=1，且會適時把and trim掉 -->
+	        <if test="name!=null">
+	            name like #{name}
+	        </if>
+            <if test="age!=null"><!-- 第二個以後要加上and -->
+                <![CDATA[and age < #{age}]]>
+            </if>
+        </where>
+        
+    </select>
+    
+    <insert id="insert" parameterType="Student">
+        insert into student(id, name, email, age)
+        values (#{id}, #{name}, #{email}, #{age})
+    </insert>
+    
+    <update id="update" parameterType="Student">
+        update student set name = #{name}, email = #{email}, age = #{age}
+        where id = #{id}
+    </update>
+    
+    <delete id="delete" parameterType="int">
+        delete from student
+        where id = #{id}
+    </delete>
+</mapper>

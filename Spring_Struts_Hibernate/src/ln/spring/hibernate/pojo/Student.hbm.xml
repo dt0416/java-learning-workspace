@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013/12/6 ?U?? 03:03:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ln.spring.hibernate.pojo.Student" table="student" catalog="4demo">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="NAME" length="20" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="100" />
+        </property>
+        <property name="age" type="java.lang.Integer">
+            <column name="AGE" />
+        </property>
+        <set name="studentcourses" table="studentcourse" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SID" not-null="true" />
+            </key>
+            <one-to-many class="ln.spring.hibernate.pojo.Studentcourse" />
+        </set>
+    </class>
+</hibernate-mapping>

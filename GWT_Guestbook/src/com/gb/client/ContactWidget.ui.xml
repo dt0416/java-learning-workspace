@@ -1,0 +1,24 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		
+	</ui:style>
+	<g:HTMLPanel>
+		<g:DockLayoutPanel unit="EM" width="275px" height="202px">
+			<g:west size="6.2">
+				<g:Image ui:field="image"/>
+			</g:west>
+			<g:center>
+				<g:VerticalPanel>
+					<g:Label text="名稱:"/>
+					<g:Label text="nameLabel" ui:field="nameLabel"/>
+					<g:Label text="Email:"/>
+					<g:Label text="emailLabel" ui:field="emailLabel"/>
+					<g:Label text="電話:"/>
+					<g:Label text="phoneLabel" ui:field="phoneLabel"/>
+				</g:VerticalPanel>
+			</g:center>
+		</g:DockLayoutPanel>
+	</g:HTMLPanel>
+</ui:UiBinder> 

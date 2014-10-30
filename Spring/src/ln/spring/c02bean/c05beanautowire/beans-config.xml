@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+		default-autowire="byName">
+        
+	<!-- byName -->
+	<bean id="student" class="ln.spring.c02bean.c05beanautowire.Student" autowire="byName">  
+		<property name="name"><!-- 當有設定property就以property優先 -->
+			<value>Jeremy Lin</value>
+		</property>
+	</bean>
+
+	<bean id="teacher" class="ln.spring.c02bean.c05beanautowire.Teacher">  
+		<property name="name">
+			<value>Teacher Lin</value>
+		</property>
+	</bean>
+
+	<!-- byType -->
+	<bean id="student2" class="ln.spring.c02bean.c05beanautowire.Student" autowire="byType">  
+		<property name="name"><!-- 當有設定property就以property優先 -->
+			<value>Jeremy Lin2</value>
+		</property>
+	</bean>
+
+	<!-- constructor -->
+	<bean id="student3" class="ln.spring.c02bean.c05beanautowire.Student" autowire="constructor">  
+		<property name="name"><!-- 當有設定property就以property優先 -->
+			<value>Jeremy Lin3</value>
+		</property>
+	</bean>
+
+
+	<!-- default -->
+	<bean id="student4" class="ln.spring.c02bean.c05beanautowire.Student" autowire="default">  
+		<property name="name"><!-- 當有設定property就以property優先 -->
+			<value>Jeremy Lin4</value>
+		</property>
+	</bean>
+
+</beans>

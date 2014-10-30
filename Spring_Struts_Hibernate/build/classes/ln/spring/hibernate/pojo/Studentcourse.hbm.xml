@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013/12/6 ?U?? 03:03:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ln.spring.hibernate.pojo.Studentcourse" table="studentcourse" catalog="4demo">
+        <composite-id name="id" class="ln.spring.hibernate.pojo.StudentcourseId">
+            <key-property name="sid" type="int">
+                <column name="SID" />
+            </key-property>
+            <key-property name="cid" type="int">
+                <column name="CID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="course" class="ln.spring.hibernate.pojo.Course" update="false" insert="false" fetch="select">
+            <column name="CID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="student" class="ln.spring.hibernate.pojo.Student" update="false" insert="false" fetch="select">
+            <column name="SID" not-null="true" />
+        </many-to-one>
+        <property name="grade" type="java.lang.Integer">
+            <column name="GRADE" />
+        </property>
+    </class>
+</hibernate-mapping>

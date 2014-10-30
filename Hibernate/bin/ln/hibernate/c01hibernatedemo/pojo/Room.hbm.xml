@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2013/12/6 ?U?? 03:03:05 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="ln.hibernate.c01hibernatedemo.pojo.Room" table="room" catalog="4demo">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="address" type="string">
+            <column name="address" />
+        </property>
+        <set name="users" table="user" inverse="true" lazy="false" fetch="select"><!-- 為了讓Room在Session外也能取到User，將lazy改成false -->
+            <key>
+                <column name="room_id" />
+            </key>
+            <one-to-many class="ln.hibernate.c01hibernatedemo.pojo.User" />
+        </set>
+    </class>
+</hibernate-mapping>

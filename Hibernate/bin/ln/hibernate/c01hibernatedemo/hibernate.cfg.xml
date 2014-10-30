@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    	<!-- db的設定值可參考此檔案:hibernate-xxx-x.x.x.xxx/project/etc/hibernate.properties -->
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">cde3vfr</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/4demo</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- other properties -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <!--在SessionFactory中建立的時候自動檢查並建立數據庫表結構,值:validate/update/create/create-drop
+            create：一律建立
+            update：沒有就建立，有的話看有沒有一致，沒有一致就建立
+            create-drop：在關閉SessionFactory時，將drop掉mapping裡有定義table
+            validate：在每次插入資料時皆會驗證資料表結構是否一致
+            注意:自動建立後的表會把原先的資料刪除
+            已上線的系統不建議使用此屬性
+        -->
+        <!-- <property name="hbm2ddl.auto">create</property> -->
+        <!-- <property name="current_session_context_class">thread</property> --><!-- 提供SessionFactory可直接使用getCurrentSession, 值:jta/thread/managed/custom.Class -->
+
+        <!-- 配置二級快取的方法 -->
+<!--         <property name="cache.use_second_level_cache">true</property> -->
+<!--         <property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property> -->
+<!--         <class-cache usage="read-only" class="pkg.Class"/> -->
+        
+        <!-- Mapping -->
+        <mapping resource="ln/hibernate/c01hibernatedemo/pojo/Student.hbm.xml" />
+        <mapping resource="ln/hibernate/c01hibernatedemo/pojo/Course.hbm.xml" />
+        <mapping resource="ln/hibernate/c01hibernatedemo/pojo/Room.hbm.xml" />
+        <mapping resource="ln/hibernate/c01hibernatedemo/pojo/Studentcourse.hbm.xml" />
+        <mapping resource="ln/hibernate/c01hibernatedemo/pojo/User.hbm.xml" />
+        
+        <!-- Mapping Syntax -->
+        <mapping resource="ln/hibernate/c04hql/StudentSyntax.xml"/>
+    </session-factory>
+</hibernate-configuration>

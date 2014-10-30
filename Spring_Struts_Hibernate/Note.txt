@@ -1,0 +1,26 @@
+==========================================================
+= Spring 2 + Struts 1 + Hibernate 3
+==========================================================
+o   測試url：http://localhost:8080/Spring_Struts_Hibernate
+o   引進各framework jar至WebContent/WEB-INF/lib
+o   在src建立applicationContext.xml
+o   結合hibernate
+    1. 產生POJO
+    2. 在applicationContext.xml設定dataSource(BasicDataSource)
+    3. 在applicationContext.xml設定sessionFactory(LocalSessionFactoryBean)包含mappingResources(hbm)
+    4. 在applicationContext.xml設定txManager(HibernateTransactionManager)
+    
+    5. 建立StudentService、StudentServiceImp
+o   結合struts
+    1. 建立ActionForm類別:StudentActionForm
+    2. 建立Action類別:StudentAction
+    3. 建立WEB-INF/student.jsp
+    4. 配置WEB-INF/struts-config.xml
+                    增加controller
+        action的type改設定至applicationContext.xml，由spring來初始action
+    5. 在applicationContext.xml設定<bean name="/student" class="ln.action.StudentAction">
+    6. 在web.xml配置*.do的servlet
+    7. 在web.xml配置filter:encodingFilter-org.springframework.web.filter.CharacterEncodingFilter
+o   結合struts、hibernate
+    1. 在web.xml配置filter:OpenSessionInViewFilter，當在jsp要用到Lazy時才可使用
+    

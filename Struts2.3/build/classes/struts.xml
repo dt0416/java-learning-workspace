@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- struts2的action必須放在指定的套件空間下定義-->
+	<!-- 套件可以擴展另外的套件，進而繼承原有套件的所有定義，包括所有的action、result、攔截器等 -->
+	<!-- package的繼承更像Java類別的繼承 -->
+	<!-- name:必須維一 -->
+	<!-- extends:允許package繼承一個或多個先前定義的套件中的設定，如果指定多個套件，則以逗號隔開 -->
+	<package name="global" extends="struts-default">
+		<!-- 底下這行主要是設定 Action class 處理成功或失敗顯示的jsp網頁-->
+		<action name="login" class="ln.struts2.action.LoginAction"><!-- name可以對應成login或login.action -->
+			<!-- name="success"可以省略 -->
+			<result>/WEB-INF/welcome.jsp</result>
+			<result name="error">/WEB-INF/error.jsp</result>
+		</action>
+	</package>
+</struts>
