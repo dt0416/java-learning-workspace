@@ -2,6 +2,8 @@ package com.date;
 
 import static org.junit.Assert.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -44,5 +46,16 @@ public class DateTest {
         Integer.parseInt(SQLDate.substring(12)));
 
     return ca.getTime();
+  }
+  
+  @Test
+  public void testSimpleDateFormat() throws ParseException {
+    String testString = "20141114";
+    Date now = new Date(114, 10, 14, 00, 00, 01);
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+    Date when = sdf.parse(testString);
+    System.out.println(now);
+    System.out.println(when);
+    System.out.println(now.equals(when));
   }
 }
