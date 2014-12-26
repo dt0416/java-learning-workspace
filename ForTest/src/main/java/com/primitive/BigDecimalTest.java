@@ -14,7 +14,7 @@ import org.junit.Test;
 public class BigDecimalTest {
 
   @Test
-  public void testBigDecimal百分比() {
+  public void test百分比() {
     BigDecimal percentExcept = new BigDecimal("0.6"); // 60%，BigDecimal建議使用String的建構子
     BigDecimal percentRight = new BigDecimal(60).divide(new BigDecimal(100)); // 60%
     BigDecimal percentWrong = new BigDecimal(60 / 100); // 0%
@@ -29,12 +29,21 @@ public class BigDecimalTest {
   }
   
   @Test
-  public void testBigDecimal除完取整數() {
-    BigDecimal b = new BigDecimal("21.8").divide(new BigDecimal("2"));
+  public void test除完取整數() {
+    BigDecimal b = new BigDecimal("21.8").divide(new BigDecimal("2")); // 10.9
     int i = b.intValue();
-//    Decimal
-//    Math.floor(a)
     assertEquals("10.9", b.toString());
     assertEquals(10, i);
+  }
+
+  @Test
+  public void testCompare() {
+    BigDecimal b_neg1 = new BigDecimal(-1);
+    BigDecimal b_0 = new BigDecimal(0);
+    BigDecimal b_1 = new BigDecimal(1);
+    
+    assertEquals(-1, b_0.compareTo(b_1)); // 小於，0 < 1
+    assertEquals(0, b_0.compareTo(b_0)); // 等於，0 = 0
+    assertEquals(1, b_0.compareTo(b_neg1)); // 大於，0 > -1
   }
 }

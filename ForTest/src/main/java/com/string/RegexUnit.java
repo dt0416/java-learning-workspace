@@ -1,6 +1,6 @@
 package com.string;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -66,5 +66,33 @@ public class RegexUnit {
     expect  = "<a>aaa</a><A>aaa</A><a href=\"http://eztravel.com.tw\">aaa</a>";
     result = testStr.replaceAll(regStr, "");
     assertEquals(expect, result);
+  }
+
+  @Test
+  public void testMatch() {
+    String testStr = "";
+    String regex = ".*(自由行|TKT|機票).*";
+
+    // true
+    testStr = "自由行";
+    assertTrue(testStr.matches(regex));
+    testStr = "TKT";
+    assertTrue(testStr.matches(regex));
+    testStr = "機票";
+    assertTrue(testStr.matches(regex));
+    testStr = "aaa機票aaa";
+    assertTrue(testStr.matches(regex));
+    testStr = "aaa機票自由行";
+    assertTrue(testStr.matches(regex));
+    testStr = "機票自由行";
+    assertTrue(testStr.matches(regex));
+    testStr = "機票自由行bbb";
+    assertTrue(testStr.matches(regex));
+    testStr = "機自由行bbb";
+    assertTrue(testStr.matches(regex));
+
+    // false
+    testStr = "aaabbbaaa";
+    assertFalse(testStr.matches(regex));
   }
 }

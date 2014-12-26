@@ -1,6 +1,9 @@
 package lib.guava;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+
+import java.math.BigDecimal;
 
 import org.junit.Test;
 
@@ -82,5 +85,24 @@ public class RangeMapTest {
         .build();
     assertTrue(markDown.get(9).equals(1));
     assertTrue(markDown.get(10) == null);
+  }
+
+  @Test
+  public void test_rangeGroup() {
+    Builder<BigDecimal, Integer> builder = ImmutableRangeMap.<BigDecimal, Integer>builder();
+    builder = builder.put(Range.atLeast(new BigDecimal("100000")), 1200);
+    builder = builder.put(Range.closed(new BigDecimal("5001"), new BigDecimal("99999")), 1000);
+    builder = builder.put(Range.closed(new BigDecimal("4001"), new BigDecimal("5000")), 800);
+    builder = builder.put(Range.closed(new BigDecimal("3001"), new BigDecimal("4000")), 600);
+    builder = builder.put(Range.closed(new BigDecimal("2001"), new BigDecimal("3000")), 300);
+    builder = builder.put(Range.closed(new BigDecimal("1501"), new BigDecimal("2000")), 200);
+    builder = builder.put(Range.closed(new BigDecimal("1001"), new BigDecimal("1500")), 100);
+    builder = builder.put(Range.atMost(new BigDecimal("1000")), 0);
+    RangeMap<BigDecimal, Integer> markDown = builder.build();
+
+    assertThat(markDown.get(new BigDecimal("100000")), is(equalTo(1200)));
+    assertThat(markDown.get(new BigDecimal("99999")), is(equalTo(1000)));
+    assertThat(markDown.get(new BigDecimal("5001")), is(equalTo(1000)));
+    assertThat(markDown.get(new BigDecimal("5000")), is(equalTo(800)));
   }
 }
