@@ -6,7 +6,7 @@ package com.protect;
  * @author Ian Chen
  */
 public class MyObject {
-    protected String getHello(String str) {
-        return "Hello " + str;
-    }
+  protected String getHello(String str) {
+    return "Hello " + str;
+  }
 }

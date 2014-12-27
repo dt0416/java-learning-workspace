@@ -8,7 +8,7 @@ package com.protect;
  */
 public class ProtectedTest {
 
-    public static void main(String[] args) {
-        new MyObject().getHello("Mary");
-    }
+  public static void main(String[] args) {
+    new MyObject().getHello("Mary");
+  }
 }

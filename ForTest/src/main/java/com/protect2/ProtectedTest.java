@@ -9,8 +9,8 @@ import com.protect.MyObject;
  */
 public class ProtectedTest {
 
-    public static void main(String[] args) {
-         //以下這行會有compile error
-        //new MyObject().getHello("Mary");
-    }
+  public static void main(String[] args) {
+    //以下這行會有compile error
+    //new MyObject().getHello("Mary");
+  }
 }
