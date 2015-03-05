@@ -1,4 +1,4 @@
-package com.map;
+package com.collection;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;

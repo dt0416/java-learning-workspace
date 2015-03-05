@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+
 /**
  * <pre> EnumTest </pre>
  *
@@ -22,7 +23,24 @@ public class EnumTest {
     }
     assertEquals("ONETWOTHREE", result);
   }
+  
+  /**
+   * 使用 == 可以正式執行，值為false.
+   */
+  @Test
+  public void testNullWithEqual() {
+    MyEnum nothing = null;
+    assertFalse(nothing == MyEnum.ONE);
+  }
 
+  /**
+   * 使用equals會產生NullPointerException.
+   */
+  @Test(expected = NullPointerException.class)
+  public void testNullWithEquals() {
+    MyEnum nothing = null;
+    assertFalse(nothing.equals(MyEnum.ONE));
+  }
 }
 
 
