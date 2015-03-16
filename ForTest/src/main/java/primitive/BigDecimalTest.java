@@ -80,4 +80,26 @@ public class BigDecimalTest {
     assertEquals(new BigDecimal("-2"), b_negative小數.setScale(0, BigDecimal.ROUND_HALF_UP)); // 四捨五入
     assertEquals(new BigDecimal("-2"), b_negative小數.setScale(0, BigDecimal.ROUND_UP)); // 無條件進入
   }
+  
+  /**
+   * 除法，必須使用divide(,,)才可避免除不盡的Exception.
+   */
+  @Test
+  public void testDivide() {
+    BigDecimal ezPrice1 = new BigDecimal("38500");
+    BigDecimal agentPrice = new BigDecimal("35800");
+    assertEquals(new BigDecimal("0.0754"),
+        ezPrice1.subtract(agentPrice).divide(agentPrice, 4, BigDecimal.ROUND_HALF_UP));
+  }
+
+  /**
+   * 除法，必須使用divide(,,)才可避免除不盡的Exception.
+   */
+  @Test(expected = ArithmeticException.class)
+  public void testDivideException() {
+    BigDecimal ezPrice1 = new BigDecimal("38500");
+    BigDecimal agentPrice = new BigDecimal("35800");
+    System.out.println(ezPrice1.subtract(agentPrice).divide(agentPrice)); // java.lang.ArithmeticException: Non-terminating decimal expansion; no exact representable decimal result.
+  }
+
 }
