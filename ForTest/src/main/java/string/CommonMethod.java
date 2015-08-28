@@ -8,10 +8,15 @@ import java.math.BigDecimal;
 import org.junit.Test;
 
 /**
+ * The Class CommonMethod.
+ *
  * @author Ian Chen
  */
 public class CommonMethod {
 
+  /**
+   * Test split.
+   */
   @Test
   public void testSplit() {
     String testString = "";
@@ -36,14 +41,49 @@ public class CommonMethod {
     testString = "aaa/bbb/ ";
     except = new String[]{"aaa", "bbb", " "};
     assertThat(testString.split("/"), is(equalTo(except)));
-  }
-  
+
+    testString = "/bbb";
+    except = new String[] {"", "bbb"};
+    assertThat(testString.split("/"), is(equalTo(except)));
+
+    // 空字串也保留
+    testString = "aaa/bbb/";
+    except = new String[]{"aaa", "bbb", ""};
+    assertThat(testString.split("/", -1), is(equalTo(except)));
+}
+
+  /**
+   * Test split multi char.
+   */
   @Test
-  public void testStringFormat() {
-    System.out.println(String.format("aaa%dbbb", 111)); // int
-    System.out.println(String.format("aaa%sbbb", "222")); // String
-    System.out.println(String.format("aaa%.0fbbb", new BigDecimal("333"))); // BigDecimal
-    System.out.println(String.format("aaa%dbbb", new Short("444"))); // Short
+  public void testSplitMultiChar() {
+    String testString = "";
+    String[] except = {};
+
+    testString = "aaa&&bbb";
+    except = new String[] {"aaa", "bbb"};
+    assertThat(testString.split("&&"), is(equalTo(except)));
   }
 
+  /**
+   * Test string format.
+   */
+  @Test
+  public void testStringFormat() {
+    assertThat(String.format("aaa%dbbb", 111), is(equalTo("aaa111bbb"))); // int
+    assertThat(String.format("aaa%sbbb", "222"), is(equalTo("aaa222bbb"))); // String
+    assertThat(String.format("aaa%,.0fbbb", new BigDecimal("3333.3336")), is(equalTo("aaa3,333bbb"))); // BigDecimal, 加千分位逗號
+    assertThat(String.format("aaa%.2fbbb", new BigDecimal("333.3336")), is(equalTo("aaa333.33bbb"))); // BigDecimal
+    assertThat(String.format("aaa%dbbb", new Short("444")), is(equalTo("aaa444bbb"))); // Short
+  }
+
+  /**
+   * Test index of.
+   */
+  @Test
+  public void testIndexOf() {
+    assertThat("abc".indexOf("d"), is(equalTo(-1)));
+    assertThat("abc".indexOf("a"), is(equalTo(0)));
+    assertThat("abc".indexOf("bc"), is(equalTo(1)));
+  }
 }

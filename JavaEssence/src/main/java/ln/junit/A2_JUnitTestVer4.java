@@ -77,6 +77,7 @@ public class A2_JUnitTestVer4 {
     public void testThrowException() {
         logger.info("testThrowException");
         int retult = new MyMath().div(10, 0);
+        logger.info(retult);
     }
     
     /**

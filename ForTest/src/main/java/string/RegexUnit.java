@@ -68,6 +68,29 @@ public class RegexUnit {
     assertEquals(expect, result);
   }
 
+  /**
+   * 只留下數字.
+   */
+  @Test
+  public void testRemoveNonNumber() {
+    String testStr = "第 02 天";
+    String expect = "02";
+    assertEquals(expect, testStr.replaceAll("\\D", ""));
+  }
+
+  /**
+   * 移除javascript裡的function xxx(...){...}.
+   */
+  @Test
+  public void testRemoveJavascriptFunction() {
+    String testStr = "aaafunction test() { if(true) {return \"\";}\n \n }bbb";
+    String expect = "aaabbbb";
+    assertEquals(expect, testStr.replaceAll("(function)(?s).*}", ""));
+  }
+  
+  /**
+   * Test match.
+   */
   @Test
   public void testMatch() {
     String testStr = "";
