@@ -15,7 +15,6 @@
   </properties>
 
   <dependencies>
-    <!-- common -->
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
@@ -24,6 +23,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
+      <scope>test</scope>
       <version>4.11</version>
     </dependency>
     <dependency>
@@ -31,8 +31,11 @@
 	  <artifactId>hamcrest-core</artifactId>
 	  <version>1.3</version>
     </dependency>
-  
-    <!-- lib -->
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.8.2</version>
+    </dependency>
     <dependency>
      <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
@@ -43,6 +46,5 @@
 	  <artifactId>guava</artifactId>
 	  <version>18.0</version>
     </dependency>
-    
   </dependencies>
 </project>
