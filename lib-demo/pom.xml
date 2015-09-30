@@ -46,5 +46,16 @@
 	  <artifactId>guava</artifactId>
 	  <version>18.0</version>
     </dependency>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <scope>test</scope>
+      <version>1.10.19</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>4.2.1.RELEASE</version>
+    </dependency>
   </dependencies>
 </project>

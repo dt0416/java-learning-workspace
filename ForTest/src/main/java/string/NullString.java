@@ -30,4 +30,11 @@ public class NullString {
     assertFalse("".equals(nullString));
   }
 
+  /**
+   * 第2個參數是null會丟出NullPointerException.
+   */
+  @Test(expected = NullPointerException.class)
+  public void testNullReplace() {
+    System.out.println("bbbaabbb".replace("aa", null));
+  }
 }
