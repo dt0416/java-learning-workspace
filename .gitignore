@@ -3,3 +3,13 @@ Servers
 Servers2
 RemoteSystemsTempFiles
 .metadata
+
+# Intellij project files
+/* *.iml */
+/* *.ipr */
+/* *.iws */
+.idea/
+
+# Gradle
+.gradle/
+build/

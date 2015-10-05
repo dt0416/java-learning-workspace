@@ -28,7 +28,7 @@ public class OracleConnectTest {
   public static void init() throws ClassNotFoundException, SQLException {
     String url = "jdbc:oracle:thin:@v890-3.eztravel.com.tw:1521:erpdbhtl";
     String userName = "itian";
-    String password = "eztravel_0224";
+    String password = "ezbeta_151001";
     Class.forName(driverClass);
 
     connection = DriverManager.getConnection(url, userName, password);

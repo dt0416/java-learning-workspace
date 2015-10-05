@@ -84,7 +84,7 @@ public class RegexUnit {
   @Test
   public void testRemoveJavascriptFunction() {
     String testStr = "aaafunction test() { if(true) {return \"\";}\n \n }bbb";
-    String expect = "aaabbbb";
+    String expect = "aaabbb";
     assertEquals(expect, testStr.replaceAll("(function)(?s).*}", ""));
   }
   
