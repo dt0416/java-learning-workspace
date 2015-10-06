@@ -25,5 +25,14 @@
     <orderEntry type="library" scope="TEST" name="Gradle: org.mockito:mockito-all:1.10.19" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.4.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.4.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.springframework:spring-webmvc:4.2.1.RELEASE" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.springframework:spring-beans:4.2.1.RELEASE" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.springframework:spring-context:4.2.1.RELEASE" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.springframework:spring-core:4.2.1.RELEASE" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.springframework:spring-expression:4.2.1.RELEASE" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.springframework:spring-web:4.2.1.RELEASE" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.springframework:spring-aop:4.2.1.RELEASE" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: commons-logging:commons-logging:1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: aopalliance:aopalliance:1.0" level="project" />
   </component>
 </module>
