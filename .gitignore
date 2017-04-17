@@ -9,6 +9,8 @@ RemoteSystemsTempFiles
 /* *.ipr */
 /* *.iws */
 .idea/
+.classpath
+.settings/
 
 # Gradle
 .gradle/
