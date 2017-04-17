@@ -118,4 +118,39 @@ public class RegexUnit {
     testStr = "aaabbbaaa";
     assertFalse(testStr.matches(regex));
   }
+
+  /**
+   * 測試match全都為英數字含底線 and -
+   */
+  @Test
+  public void testMatch2() {
+    assertTrue("abc123_ABC".matches("[\\w-]*"));
+    assertTrue("abc123-ABC".matches("[\\w-]*"));
+
+    // 不合法
+    assertFalse("abc123 _ABC".matches("[\\w-]*"));
+    assertFalse("abc123[_ABC".matches("[\\w-]*"));
+    assertFalse("abc123,_ABC".matches("[\\w-]*"));
+//    assertFalse("abc123-_ABC".matches("[a-zA-Z_0-9-_]*"));
+    assertFalse("abc123._ABC".matches("[\\w-]*"));
+  }
+
+  /**
+   * 測試取代逗號+空白
+   */
+  @Test
+  public void testReplaceSpace() {
+    String testStr = "";
+    String regex = ", *";
+
+    testStr = ",";
+    assertEquals(testStr.replaceAll(regex, ", "), ", ");
+    testStr = ", ";
+    assertEquals(testStr.replaceAll(regex, ", "), ", ");
+    testStr = ",  ";
+    assertEquals(testStr.replaceAll(regex, ", "), ", ");
+    testStr = ",  \r\n";
+    assertEquals(testStr.replaceAll(regex, ", "), ", \r\n");
+    System.out.println("aaa.bbb\n.ccc".replace('.', '/'));
+  }
 }

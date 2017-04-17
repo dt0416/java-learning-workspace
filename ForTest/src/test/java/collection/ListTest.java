@@ -28,4 +28,16 @@ public class ListTest {
 //      System.out.println(string);
 //    }
   }
+
+  @Test
+  public void testToArray() {
+    List<String> strs = new ArrayList<String>();
+    strs.add("A");
+    strs.add("B");
+    strs.add("C");
+    assertThat(strs.toArray(new String[strs.size()]), equalTo(strs.toArray(new String[0]))); // 陣列長度小於list size
+    assertThat(strs.toArray(new String[strs.size()]), equalTo(strs.toArray(new String[3]))); // 陣列長度等於list size
+    assertThat(strs.toArray(new String[strs.size()]), not(equalTo(strs.toArray(new String[4])))); // 陣列長度超過list size
+//    System.out.println(strs.toArray(new String[strs.size()]).length);
+  }
 }

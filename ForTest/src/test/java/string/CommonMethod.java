@@ -86,4 +86,26 @@ public class CommonMethod {
     assertThat("abc".indexOf("a"), is(equalTo(0)));
     assertThat("abc".indexOf("bc"), is(equalTo(1)));
   }
+
+  /**
+   * Test compare To
+   */
+  @Test
+  public void testCompareTo() {
+    assertThat("20160101".compareTo("20151231"), is(equalTo(1)));
+    assertThat("20160101".compareTo("20160101"), is(equalTo(0)));
+    assertThat("20160101".compareTo("20160102"), is(equalTo(-1)));
+  }
+
+  /**
+   * Test contains
+   */
+  @Test
+  public void testContains() {
+    String testStr = "這是半自由行的商品";
+    assertThat(testStr.contains("自由行") && !testStr.contains("半自由行"), is(false));
+
+    testStr = "這是自由行的商品";
+    assertThat(testStr.contains("自由行") && !testStr.contains("半自由行"), is(true));
+  }
 }
