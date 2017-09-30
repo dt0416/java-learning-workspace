@@ -3,6 +3,7 @@ Servers
 Servers2
 RemoteSystemsTempFiles
 .metadata
+/bin/
 
 # Intellij project files
 /* *.iml */
