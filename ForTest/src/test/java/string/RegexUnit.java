@@ -134,6 +134,15 @@ public class RegexUnit {
 //    assertFalse("abc123-_ABC".matches("[a-zA-Z_0-9-_]*"));
     assertFalse("abc123._ABC".matches("[\\w-]*"));
   }
+  
+  /**
+   * 測試match http://、https://
+   */
+  @Test
+  public void testMatchHttps() {
+    assertTrue("http://3w.eztravel.com.tw".matches("(?:https?)://.+"));
+    assertTrue("https://3w.eztravel.com.tw".matches("(?:https?)://.+"));
+  }
 
   /**
    * 測試取代逗號+空白
@@ -144,13 +153,13 @@ public class RegexUnit {
     String regex = ", *";
 
     testStr = ",";
-    assertEquals(testStr.replaceAll(regex, ", "), ", ");
+    assertEquals(", ", testStr.replaceAll(regex, ", "));
     testStr = ", ";
-    assertEquals(testStr.replaceAll(regex, ", "), ", ");
+    assertEquals(", ", testStr.replaceAll(regex, ", "));
     testStr = ",  ";
-    assertEquals(testStr.replaceAll(regex, ", "), ", ");
+    assertEquals(", ", testStr.replaceAll(regex, ", "));
     testStr = ",  \r\n";
-    assertEquals(testStr.replaceAll(regex, ", "), ", \r\n");
-    System.out.println("aaa.bbb\n.ccc".replace('.', '/'));
+    assertEquals(", \r\n", testStr.replaceAll(regex, ", "));
   }
+
 }
