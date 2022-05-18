@@ -3,6 +3,7 @@ package string;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
+import java.io.File;
 import java.math.BigDecimal;
 
 import org.junit.Test;
@@ -50,7 +51,19 @@ public class CommonMethod {
     testString = "aaa/bbb/";
     except = new String[]{"aaa", "bbb", ""};
     assertThat(testString.split("/", -1), is(equalTo(except)));
-}
+
+    testString = "127.0.0.1";
+    except = new String[] {"127.0.0.1"};
+    assertThat(testString.split(","), is(equalTo(except)));
+
+    testString = "127.0.0.1";
+    String exceptStr = "127.0.0.1";
+    assertThat(testString.split(",")[0], is(equalTo(exceptStr)));
+
+    testString = "127.0.0.1,";
+    exceptStr = "127.0.0.1";
+    assertThat(testString.split(",")[0], is(equalTo(exceptStr)));
+  }
 
   /**
    * Test split multi char.
@@ -108,4 +121,51 @@ public class CommonMethod {
     testStr = "這是自由行的商品";
     assertThat(testStr.contains("自由行") && !testStr.contains("半自由行"), is(true));
   }
+  
+  @Test
+  public void testValueOf() {
+    assertThat(String.valueOf(false), is("false"));
+  }
+  
+  @Test
+  public void testLength() {
+    System.out.println("aaa".getBytes(java.nio.charset.StandardCharsets.UTF_8).length); //3
+    System.out.println("王小明".getBytes(java.nio.charset.StandardCharsets.UTF_8).length); //9
+    System.out.println("aaa王小明".getBytes(java.nio.charset.StandardCharsets.UTF_8).length); //12
+  }
+  
+  @Test
+  public void testReplace() {
+    System.out.println("123.456.789".replace(".", File.separator));
+  }
+  
+  @Test
+  public void testFormat() {
+    System.out.println(String.format("%1$-25s", "").length());
+  }
+  
+  @Test
+  public void test分隔點號() {
+    String appVersion = "5.3.1";
+    String[] appVersionSplit = appVersion.split("\\.");
+    System.out.println(appVersionSplit);
+    System.out.println(appToInt(appVersion));
+  }
+  
+  private int appToInt(String version) {
+    String[] appVersionSplit = version.split("\\.");
+    int multiplier = 1000;
+    int sum = 0;
+    for (String ver : appVersionSplit) {
+      int verInt = Integer.parseInt(ver);
+      if (multiplier >= 100) {
+        sum += multiplier * verInt;
+        multiplier = multiplier / 10;
+      } else {
+        sum += verInt;
+      }
+    }
+    return sum;
+  }
+  
 }

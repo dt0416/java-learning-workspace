@@ -101,5 +101,10 @@ public class BigDecimalTest {
     BigDecimal agentPrice = new BigDecimal("35800");
     System.out.println(ezPrice1.subtract(agentPrice).divide(agentPrice)); // java.lang.ArithmeticException: Non-terminating decimal expansion; no exact representable decimal result.
   }
+  
+  @Test()
+  public void testZeroDivide() {
+    System.out.println(BigDecimal.ZERO.divide(BigDecimal.TEN));
+  }
 
 }

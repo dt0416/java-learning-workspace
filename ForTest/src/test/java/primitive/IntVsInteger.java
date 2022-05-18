@@ -2,6 +2,7 @@ package primitive;
 
 import static org.junit.Assert.*;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 /**
@@ -42,5 +43,18 @@ public class IntVsInteger {
     assertFalse(i.equals("123"));
 
     assertEquals(0, -1 / 40);
+  }
+  
+  @Test
+  public void testLong() {
+    System.out.println((long)0.3);
+  }
+  
+  @Test
+  public void testZero() {
+    int i = 0;
+    int j = 0;
+    int sum = i * j; // 不會有錯
+    System.out.println(sum);
   }
 }

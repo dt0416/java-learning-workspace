@@ -1,5 +1,9 @@
 package passvalue;
 
+import org.junit.Test;
+
+import primitive.TypeDefaultValue;
+
 /**
  * 測試傳值後String及物件是否被改變
  * 
@@ -41,7 +45,23 @@ public class PassUnit {
   public static void passMethod(MyObj mo) {
     mo.objStr = "PassString";
   }
+  
+  @Test
+  public void testTypeDefaultValue() {
+    MyObj mO = null;
+    MyObj mO1 = new MyObj();
+    MyObj mO2 = new MyObj();
+    mO2.objStr = "I am mO2";
+    mO = mO1;
+    System.out.println(mO.objStr);
+    mO1 = mO2;
+    System.out.println(mO.objStr);
+    System.out.println(mO1.objStr);
+    System.out.println("02".equals(null));
+  }
 }
+
+
 
 /**
  * @author Ian Chen

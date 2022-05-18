@@ -2,6 +2,10 @@ package string;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.junit.Test;
 
 
@@ -161,5 +165,45 @@ public class RegexUnit {
     testStr = ",  \r\n";
     assertEquals(", \r\n", testStr.replaceAll(regex, ", "));
   }
+  
+  /**
+   * 測試replace和replaceAll差別
+   */
+  @Test
+  public void testReplaceAndReplaceAll() {
+    String testStr = "1.2.3";
 
+    assertEquals(testStr.replace(".", ""), testStr.replaceAll("\\.", "")); // 123
+  }
+  
+  @Test(expected=IllegalArgumentException.class)
+  public void testReplaceAndReplaceAllWithSeparator() {
+    String testStr = "1.2.3";
+    // 在windows會產生IllegalArgumentException
+    System.out.println(testStr.replaceAll("\\.", File.separator));
+  }
+
+  @Test
+  public void mobileCheck() {
+    Pattern patternEmail = Pattern.compile("^09\\d*$");
+    Matcher matcher = patternEmail.matcher("09");
+    System.out.println(matcher.matches()); 
+    matcher = patternEmail.matcher("0912");
+    System.out.println(matcher.matches()); 
+    matcher = patternEmail.matcher("0912a");
+    System.out.println(matcher.matches()); 
+  }
+  
+  /**
+   * 把不易區別的文字取代成s
+   */
+  @Test
+  public void simpleReplace() {
+    String str = "AAA";
+    System.out.println(str.replaceAll("[1iIloO0]", "s"));
+    str = "AiAjkl";
+    System.out.println(str.replaceAll("[1iIloO0]", "s"));
+    str = "AiAjkl1234560oaaaa";
+    System.out.println(str.replaceAll("[1iIloO0]", "s"));
+  }
 }

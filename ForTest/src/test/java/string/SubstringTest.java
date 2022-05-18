@@ -18,6 +18,8 @@ public class SubstringTest {
     String testString  = "12:34";
     assertThat(testString.substring(0, 2), is(equalTo("12")));
     assertThat(testString.substring(3, 5), is(equalTo("34")));
+    testString  = "202203";
+    assertThat(testString.substring(4, 7), is(equalTo("03")));
   }
   
   @Test
@@ -27,5 +29,11 @@ public class SubstringTest {
     String oriUrl = testString.substring(testString.indexOf("http"),
         testString.indexOf("\"", testString.indexOf("http")));
     assertThat(oriUrl, is(equalTo("http://tb.hhtravel.com/index_tw.html?departArea=TPE")));
+  }
+
+  @Test
+  public void testSubstringWithIndexOf() {
+    String testString  = "12-3412-3";
+    assertThat(testString.substring(testString.indexOf("-") + 1), is(equalTo("3412-3")));
   }
 }

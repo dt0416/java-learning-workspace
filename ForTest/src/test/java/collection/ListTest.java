@@ -40,4 +40,15 @@ public class ListTest {
     assertThat(strs.toArray(new String[strs.size()]), not(equalTo(strs.toArray(new String[4])))); // 陣列長度超過list size
 //    System.out.println(strs.toArray(new String[strs.size()]).length);
   }
+  
+  @Test
+  public void testSubList() {
+    List<String> strs = new ArrayList<String>();
+    strs.add("A");
+    strs.add("B");
+    strs.add("C");
+
+    //  IndexOutOfBoundsException
+    System.out.println(strs.subList(0, 4));
+  }
 }

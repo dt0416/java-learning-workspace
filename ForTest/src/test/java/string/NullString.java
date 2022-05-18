@@ -19,6 +19,8 @@ public class NullString {
     String nullString = null;
     String test = nullString + "test";
     assertEquals("nulltest", test);
+    test = "test" + nullString;
+    assertEquals("testnull", test);
   }
 
   /**

@@ -53,4 +53,28 @@ public class SetTest {
       this.name = name;
     }
   }
+  
+  @Test
+  public void testRemoveAll() {
+    Set<String> set1 = new HashSet<String>();
+    Set<String> set2 = new HashSet<String>();
+    set1.add("A1");
+    set1.add("A2");
+    set1.add("A3");
+    set1.add("B1");
+    set1.add("B2");
+    set1.add("B3");
+    
+    set2.add("A2");
+    set2.add("B3");
+    set2.add("B4");
+    for (String str : set1) {
+      System.out.println(str);
+    }
+    set1.removeAll(set2);
+    System.out.println("======removeAll=====");
+    for (String str : set1) {
+      System.out.println(str);
+    }
+  }
 }
