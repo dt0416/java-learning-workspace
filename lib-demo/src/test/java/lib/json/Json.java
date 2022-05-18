@@ -119,4 +119,12 @@ public class Json {
     JavaType type = mapper.getTypeFactory().constructType(clazz);
     return mapper.readValue(jsonString, type);
   }
+  
+  @Test
+  public void testJsonToHashMap() throws JsonProcessingException, IOException {
+    ObjectMapper objectMapper = new ObjectMapper();
+    String jsonStr = "{\"windows\":\"C:\\\\opt\\\\APP\\\\aes\\\\\",\"mac\":\"/opt/APP/aes/\",\"linux\":\"/opt/APP/aes/\"}";
+    HashMap pfProd = objectMapper.readValue(jsonStr, HashMap.class);
+    logger.info("{}", pfProd);
+  }
 }
