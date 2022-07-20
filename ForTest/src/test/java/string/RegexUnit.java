@@ -139,6 +139,29 @@ public class RegexUnit {
     assertFalse("abc123._ABC".matches("[\\w-]*"));
   }
   
+  @Test
+  public void testMatch3() {
+    assertTrue("01".matches("01|02"));
+    assertTrue("02".matches("01|02"));
+
+    // 不合法
+    assertFalse("".matches("01|02"));
+    assertFalse("011".matches("01|02"));
+    assertFalse("03".matches("01|02"));
+  }
+
+  @Test
+  public void testMatch4() {
+    assertTrue("ORD0000000001".matches("ORD\\d{10}"));
+
+    // 不合法
+    assertFalse("".matches("ORD\\d{10}"));
+    assertFalse("ORD".matches("ORD\\d{10}"));
+    assertFalse("ORD000000001".matches("ORD\\d{10}"));
+    assertFalse("ORD0a1".matches("ORD\\d{10}"));
+    assertFalse("ORA0001".matches("ORD\\d{10}"));
+  }
+  
   /**
    * 測試match http://、https://
    */
@@ -205,5 +228,15 @@ public class RegexUnit {
     System.out.println(str.replaceAll("[1iIloO0]", "s"));
     str = "AiAjkl1234560oaaaa";
     System.out.println(str.replaceAll("[1iIloO0]", "s"));
+  }
+  
+  @Test
+  public void orderNo() {
+    String regex = "ORD\\d{10}";
+    assertTrue("ORD0012345678".matches(regex));
+
+    assertFalse("ORD001234567".matches(regex));
+    assertFalse("ORD00123456789".matches(regex));
+    assertFalse("ORDA012345678".matches(regex));
   }
 }

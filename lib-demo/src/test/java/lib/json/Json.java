@@ -124,7 +124,7 @@ public class Json {
   public void testJsonToHashMap() throws JsonProcessingException, IOException {
     ObjectMapper objectMapper = new ObjectMapper();
     String jsonStr = "{\"windows\":\"C:\\\\opt\\\\APP\\\\aes\\\\\",\"mac\":\"/opt/APP/aes/\",\"linux\":\"/opt/APP/aes/\"}";
-    HashMap pfProd = objectMapper.readValue(jsonStr, HashMap.class);
+    HashMap<String, String> pfProd = objectMapper.readValue(jsonStr, HashMap.class);
     logger.info("{}", pfProd);
   }
 }

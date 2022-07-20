@@ -168,4 +168,13 @@ public class CommonMethod {
     return sum;
   }
   
+  @Test
+  public void testContain() {
+    String roles = "B2C,B2E";
+    assertTrue(roles.contains("B2C"));
+    assertTrue(roles.contains("B2E"));
+    assertFalse(roles.contains("B2B"));
+    assertFalse(roles.contains("B2F"));
+  }
+  
 }
